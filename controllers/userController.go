@@ -37,6 +37,7 @@ func (u UserController) CreateUser(c *gin.Context) {
 		SendResponse(c, http.StatusBadRequest, "error", nil, err.Error())
 		return
 	}
+	defer user.Close()
 
 	for user.Next() {
 		var user1 models.UserGet
