@@ -31,5 +31,5 @@ func main() {
 
 	_ = psqlConn
 
-	routes.Run()
+	routes.Run(psqlConn)
 }

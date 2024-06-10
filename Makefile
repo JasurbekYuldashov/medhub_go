@@ -14,8 +14,8 @@ run:
 migration:
 	@migrate create -ext sql -dir ./migrations -seq $(name)
 
-migrateup:
+dbup:
 	@migrate -path ./migrations -database "$(DB_URL)" -verbose up
 
-migratedown:
+dbdown:
 	@migrate -path ./migrations -database "$(DB_URL)" -verbose down

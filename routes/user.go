@@ -1,15 +1,18 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"github.com/jasurbekyuldashov/medhub_go/controllers"
+	"github.com/jmoiron/sqlx"
 )
 
-func addUserRoutes(rg *gin.RouterGroup) {
-	ping := rg.Group("/user")
+func addUserRoutes(rg *gin.RouterGroup, db *sqlx.DB) {
+	ping := rg.Group("/users")
 
-	ping.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, "pong")
-	})
+	controller1 := controllers.UserController{
+		Database: db,
+	}
+
+	ping.GET("/", controller1.GetAll)
+	ping.POST("/", controller1.CreateUser)
 }
