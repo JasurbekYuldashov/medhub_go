@@ -2,7 +2,6 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jmoiron/sqlx"
 	"log"
 	"net/http"
 	"os"
@@ -12,8 +11,8 @@ import (
 var router = gin.Default()
 
 // Run will start the server
-func Run(db *sqlx.DB) {
-	getRoutes(db)
+func Run() {
+	getRoutes()
 	router.NoRoute(func(c *gin.Context) {
 		c.HTML(404, "404.html", gin.H{})
 	})
@@ -52,7 +51,7 @@ func Run(db *sqlx.DB) {
 // getRoutes will create our routes of our entire application
 // this way every group of routes can be defined in their own file
 // so this one won't be so messy
-func getRoutes(db *sqlx.DB) {
+func getRoutes() {
 	v1 := router.Group("/v1")
-	addUserRoutes(v1, db)
+	addUserRoutes(v1)
 }

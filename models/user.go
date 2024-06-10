@@ -6,3 +6,9 @@ type User struct {
 	Email    string `db:"email" json:"email"`
 	Password string `db:"password" json:"password"`
 }
+
+type UserGet struct {
+	Base
+	FullName string `json:"fullName"`
+	Email    string `json:"email"`
+}
