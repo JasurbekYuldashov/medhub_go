@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: postgres:latest
-    container_name: postgres_container
+    container_name: postgres_container1
     environment:
       POSTGRES_USER: yourusername
       POSTGRES_PASSWORD: yourpassword
@@ -12,6 +12,22 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: my_redis
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=yourpassword
+    command: [ "redis-server", "--requirepass", "yourpassword" ]
+    volumes:
+      - redis_data:/data
+    networks:
+      - redis_network
 
 volumes:
   postgres_data:
+  redis_data:
+
+networks:
+  redis_network:

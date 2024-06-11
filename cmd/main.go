@@ -10,8 +10,11 @@ import (
 
 func main() {
 
+	db.Init()
 	log.Println("Postgres Connection successfully done!")
 
-	db.Init()
+	db.InitRedis(1)
+	log.Println("Redis Connection successfully done!")
+
 	routes.Run()
 }
