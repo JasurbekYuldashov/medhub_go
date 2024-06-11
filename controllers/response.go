@@ -20,16 +20,6 @@ func ResponseError(c *gin.Context, statusCode int, error interface{}, message st
 	})
 }
 
-func ResponseSuccess(c *gin.Context, statusCode int, data interface{}, message string) {
-	message = ""
-	data = nil
-	c.JSON(statusCode, &ResponseData{
-		Code: statusCode,
-		Msg:  CodeSuccess.Msg(),
-		Data: data,
-	})
-}
-
 func SendResponse(c *gin.Context, status int, message string, data interface{}, err interface{}) {
 	response := ResponseData{
 		Code:  status,

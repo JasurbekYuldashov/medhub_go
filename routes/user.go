@@ -11,5 +11,6 @@ func addUserRoutes(rg *gin.RouterGroup) {
 	controller1 := controllers.UserController{}
 
 	ping.GET("/", controller1.GetAll)
-	ping.POST("/", controller1.CreateUser)
+	ping.GET("/:id", controller1.GetOne)
+	//ping.POST("/", controller1.CreateUser)
 }
