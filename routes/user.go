@@ -6,11 +6,13 @@ import (
 )
 
 func addUserRoutes(rg *gin.RouterGroup) {
-	ping := rg.Group("/users")
+	ping := rg.Group("/user")
 
 	controller1 := controllers.UserController{}
 
 	ping.GET("/", controller1.GetAll)
 	ping.GET("/:id", controller1.GetOne)
-	//ping.POST("/", controller1.CreateUser)
+	ping.POST("/login", controller1.Login)
+	ping.POST("/register", controller1.Register)
+	ping.GET("/logout", controller1.Logout)
 }
