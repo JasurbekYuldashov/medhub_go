@@ -40,7 +40,6 @@ func ConnectDB() (*sqlx.DB, error) {
 	//if err = db.Ping(); err != nil {
 	//	return nil, err
 	//}
-
 	cfg := config.Load(".")
 
 	psqlUrl := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",

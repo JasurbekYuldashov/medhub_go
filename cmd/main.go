@@ -15,6 +15,5 @@ func main() {
 
 	db.InitRedis(1)
 	log.Println("Redis Connection successfully done!")
-
 	routes.Run()
 }
